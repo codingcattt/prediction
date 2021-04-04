@@ -60,7 +60,7 @@ public class DataReader<R> implements AutoCloseable {
 
 	public List<int[]> readAllDatas() throws IOException {
 		List<int[]> datas = new ArrayList<int[]>();
-		String line = null;
+		String line;
 		while ((line = reader.readLine()) != null) {
 			int[] data = readData(line);
 			if (data != null) {
@@ -70,12 +70,12 @@ public class DataReader<R> implements AutoCloseable {
 		return datas;
 	}
 
-	@Override
 	public void close() throws Exception {
 		if (reader != null) {
 			try {
 				reader.close();
 			} catch (Exception e) {
+				System.err.println(e);
 			}
 		}
 	}
